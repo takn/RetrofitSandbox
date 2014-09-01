@@ -28,4 +28,5 @@ dependencies {
     compile 'de.greenrobot:eventbus:2.2.1'
     compile 'com.netflix.rxjava:rxjava-core:0.20.0-RC4'
     compile 'com.netflix.rxjava:rxjava-android:0.20.0-RC4'
+    compile 'com.github.provigen:ProviGen-lib:2.0+'
 }
