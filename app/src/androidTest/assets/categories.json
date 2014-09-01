@@ -1,0 +1,774 @@
+{
+  "name": "Tag Categories",
+  "internal": "tag_categories",
+  "groups": [
+    {
+      "name": "Shows",
+      "internal": "shows",
+      "heading": null,
+      "description": null,
+      "image_url": null,
+      "tags": [
+        {
+          "name": "Daily Byte",
+          "internal": "daily-byte",
+          "heading": "Your byte-sized news for all things nerdy.",
+          "description": "Dodger brings you the latest nerdy headlines from all around the interwebz. Games, movies, comics, and all the other stuff you care about.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/daily-byte.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/daily-byte-bnr.jpg"
+        },
+        {
+          "name": "Table Flip",
+          "internal": "table-flip",
+          "heading": "Flip tables with the Game Grumps!",
+          "description": "Suzy and Barry from the Game Grumps invite their friends over to play some board games and flip some tables.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/1tableflip-thumb.png",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/1tableflip.png"
+        },
+        {
+          "name": "FriendZone",
+          "internal": "friendzone",
+          "heading": "Come hang out live as we play games and build pillow forts!",
+          "description": "We gather a couple of our favorite people together in the studio each week for a casual, live hangout to play new or interesting games, sit down around a table for board gaming, or just discuss some recent nerdy news.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/friendzone.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/friendzone-bnr.jpg"
+        },
+        {
+          "name": "Lore",
+          "internal": "lore",
+          "heading": "Lore in a Minute!",
+          "description": "Lore is your one stop shop for quick, comprehensive videogame backstories, all told in sixty seconds.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/lore.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/lore-bnr.jpg"
+        },
+        {
+          "name": "CoOptional Podcast",
+          "internal": "cooptional-podcast",
+          "heading": "TotalBiscuit, Jesse Cox, and Dodger have their weekly about recent news and releases in the video game industry.",
+          "description": "Hosted by John “TotalBiscuit” Bain, Dodger Leigh, and Jesse Cox. Join them each week as they discuss the latest headlines from around the gaming industry as well as what they’ve been playing.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/cooptional-podcast.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/cooptional-podcast-bnr.jpg"
+        },
+        {
+          "name": "Fast Facts",
+          "internal": "fast-facts",
+          "heading": "Betcha didn’t know this! Quick, little known facts about your favorite video games.",
+          "description": "Click here to learn 3 quick facts that you might not know about your favorite games! Ranging from weird easter eggs, to fun facts from a game’s development. Fast Facts!",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/fast-facts.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/fast-facts-bnr.jpg"
+        },
+        {
+          "name": "Pewdiepie & Friends",
+          "internal": "pewdiepie-friends",
+          "heading": "Pewdiepie and some of his closest bros sit down and play some games!",
+          "description": "Join Pewdiepie each week as he sits down with some of his closest friends to play some weird, hilarious games!",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/pewdiepie-friends.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/pewdiepie-friends-bnr.jpg"
+        },
+        {
+          "name": "Polaris Animated",
+          "internal": "polaris-animated",
+          "heading": "Polaris Animated Universe",
+          "description": "Polaris Animated Universe is a weekly show featuring the best and brightest stars in the Polaris network. Send us your favorite moments from talent all around the Polaris Network, and we might animate it!",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/PolarisAnimated.png",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/PolarisAnimated-bnr.png"
+        },
+        {
+          "name": "Simple Simon",
+          "internal": "simple-simon",
+          "heading": "Simon and Lewis of the Yogscast host a new guest every week.",
+          "description": "Simon must guess how the guest would answer questions by Lewis.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/simple-simon.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/simple-simon-bnr.jpg"
+        },
+        {
+          "name": "ama",
+          "internal": "ama",
+          "heading": "",
+          "description": "",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/ama.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/ama-bnr.jpg"
+        },
+        {
+          "name": "CoOptional Podcast Highlights",
+          "internal": "cooptional-podcast-highlights",
+          "heading": "We count down the greatest moments from the most recent episode of the CoOpional Podcast.",
+          "description": "",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/cooptional-podcast-highlights.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/cooptional-podcast-highlights-bnr.jpg"
+        },
+        {
+          "name": "Sjin's Fun Friendly Building Challenge",
+          "internal": "sjins-fun-friendly-building-challenge",
+          "heading": "Watch Sjin interview a guest while building all sorts of stuff in Minecraft.",
+          "description": "Enjoy!",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/sjins-fun-friendly-building-challenge.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/sjins-fun-friendly-building-challenge-bnr.jpg"
+        },
+        {
+          "name": "Fam Cave",
+          "internal": "fam-cave",
+          "heading": "Shay and Gavin hang out in the Fam Cave to play some games!",
+          "description": "Shay Carl and Gavin spend some quality father-son time sitting down and playing some of their favorite games.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/fam cave.png",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/famcave-bnr.png"
+        },
+        {
+          "name": "Holodeck",
+          "internal": "holodeck",
+          "heading": "Holodeck, with Captain Chad and his A.I. companion.",
+          "description": "Captain Chad and his reluctant A.I. companion Niles are lost in space on the Polaris ship The Frontiersman. As they try to find their way home they entertain themselves with videos and unexpected drop-ins from channels in the Polaris galaxy.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/Holodeck-thumb.png",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/Holodeck-bnr.png"
+        },
+        {
+          "name": "Polaris Review",
+          "internal": "polaris-review",
+          "heading": "",
+          "description": "",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/polaris-review.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/polaris-review-bnr.jpg"
+        },
+        {
+          "name": "Mobile Countdown",
+          "internal": "mobile-countdown",
+          "heading": "A look at the latest and greatest mobile games that you should have in your hands this week.",
+          "description": "Dodger counts down the latest and greatest mobile games from all platforms. You’re bound to find something to get your hands on each week!",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/mobile-countdown.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/mobile-countdown-bnr.jpg"
+        },
+        {
+          "name": "Checkpoint",
+          "internal": "checkpoint",
+          "heading": "An animated speed run of your favorite games from beginning to end! All in under sixty seconds!",
+          "description": "Check out animated speedruns of your favorite games! We hit all the major plot points of each game at a crazy pace. All in under sixty seconds. Beware of spoilers!",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/checkpoint.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/checkpoint-bnr.jpg"
+        },
+        {
+          "name": "Bad Dubs",
+          "internal": "bad-dubs",
+          "heading": "Markiplier and Jesse Cox dub over your favorite cutscenes... badly.",
+          "description": "",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/bad-dubs.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/bad-dubs-bnr.jpg"
+        },
+        {
+          "name": "constellation prize",
+          "internal": "constellation-prize",
+          "heading": "",
+          "description": "",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/ConstellationAnnouncement.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/constellation-bnr.png"
+        },
+        {
+          "name": "STRIPPIN'S GOT GAME SHOW",
+          "internal": "strippins-got-game-show",
+          "heading": "",
+          "description": "",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/strippins-got-game-show.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/strippins-got-game-show-bnr.jpg"
+        },
+        {
+          "name": "The Gauntlet",
+          "internal": "the-gauntlet",
+          "heading": "Rooster Teeth Presents The Gauntlet!",
+          "description": "This year on The Gauntlet, hosts Burnie Burns and Joel Heyman assemble four teams of expert gamers: one from Rooster Teeth, one from Achievement Hunter, a team of Internet Celebrities, and a team of fans who earned their spot on the show during the qualifying rounds at RTX 2013.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/the-gauntlet.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/the-gauntlet-bnr.jpg"
+        }
+      ],
+      "category_style": "rectangleBanner"
+    },
+    {
+      "name": "Talent",
+      "internal": "talent",
+      "heading": null,
+      "description": null,
+      "image_url": null,
+      "tags": [
+        {
+          "name": "AngryJoeShow",
+          "internal": "angryjoeshow",
+          "heading": "The most watched review show on Youtube. Just hope Joe actually likes your game.",
+          "description": "AngryJoe isn't very angry. Well, unless your game ruins a franchise that he loves or your business model is terrible. As long as that's not happening, you can expect to see Joe giving one of his signature game reviews, typically dressed in costume, helping you decide if the latest games are worth your hard earned money.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/angryjoeshow.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/angryjoeshow-bnr.jpg"
+        },
+        {
+          "name": "ProJared",
+          "internal": "projared",
+          "heading": "Covering the entire span of videogames, Jared reviews both hidden gems and complete turds that you should never touch.",
+          "description": "Jared is the Brian Williams of gaming journalism. Don't know who Brian Williams is? God, why does no one watch the nightly news anymore? Jared reviews games both retro and brand spanking new, and does deep introspective into gaming franchises.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/projared.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/projared-bnr.jpg"
+        },
+        {
+          "name": "DYKGaming",
+          "internal": "dykgaming",
+          "heading": "Need fun video game facts to impress your friends? Look not further than didyouknowgaming.",
+          "description": "Didyouknowgaming will consistently blow your mind with obscure trivia about your favorite game series. Did you know that Zelda has an extra toe? What about Castlevania originally being set in an abandoned Dairy Queen? Neither did we.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/dykgaming.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/dykgaming-bnr.jpg"
+        },
+        {
+          "name": "ItMeJP",
+          "internal": "itmejp",
+          "heading": "The most connected man in Esports covering everything you need to know.",
+          "description": "itmeJP is one of the most trusted names in eSports. He's like your lovable older brother, but instead of beating you up he'll tell you all about the State of the Game and how to roll proper d20s.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/itmejp.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/itmejp-bnr.jpg"
+        },
+        {
+          "name": "markiplierGAME",
+          "internal": "markipliergame",
+          "heading": "Wacky Let's Plays, and a pink 'stache that just won't quit.",
+          "description": "In May 2012, a man with a suave voice and a glorious pink moustache decided he would make a let’s play channel unlike anything the world has seen. Thus Markiplier was born! His channel’s let’s play videos range from horror and puzzle games to drunk Minecraft. He provides his own unique twist on LP’s by combining panicked, wackiness with calm, sarcastic bravado. Markiplier has an eye for the finer details in games and makes a point to praise well done physics or unique characteristics.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/markipliergame.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/markipliergame-bnr.jpg"
+        },
+        {
+          "name": "PurgeGamers",
+          "internal": "purgegamers",
+          "heading": "Purge is your guide into the world of Dota 2, with full daily playthroughs of champions and breakdowns strategy.",
+          "description": "\"HelloeverybodythisisPurge\". Have you ever tried to get better at Dota 2? Then you likely already know Purge. If not, welcome to Dota. You suck.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/purgegamers.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/purgegamers-bnr.jpg"
+        },
+        {
+          "name": "SmoothMcGroove",
+          "internal": "smoothmcgroove",
+          "heading": "A one-man gaming acapella concert with the looks of a viking and the voice of an angel.",
+          "description": "The bearded man with a voice like velvet, Smooth remakes acapella versions of video game songs and popularized nerd tracks. Using multiple video tracks, Smooth recreates every instrument and track in the game, becoming a one-man band.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/smoothmcgroove.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/smoothmcgroove-bnr.jpg"
+        },
+        {
+          "name": "TheJWittz",
+          "internal": "thejwittz",
+          "heading": "The Jwittz is truly a Pokemon master. His passion shines through his videos, leaving the viewer informed and excited to play.",
+          "description": "The Jwittz, eats, breathes, and lives everything Pokemon. His passion for the game and the lore shines through his videos, and he maintains a consistent schedule with fresh facts and videos on a near daily basis. From LP’s to fun facts and trivia uploads, TheJwittz is an authority on the Pokemon universe.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/thejwittz.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/thejwittz-bnr.jpg"
+        },
+        {
+          "name": "forcesc2strategy",
+          "internal": "forcesc2strategy",
+          "heading": "Daily gaming commentary and news.",
+          "description": "Coverage ranges from AAA to indie titles, basically any upcoming game that I find interesting and worth sharing! Subscribe to stay up to date on what's going on in the industry.\r\n",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/force.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/force-bnr.jpg"
+        },
+        {
+          "name": "DookieshedVIDS",
+          "internal": "dookieshedvids",
+          "heading": " Reviews, News, Top 10s and more. ",
+          "description": "DookieShed brings you the latest on everything Pokemon, Mega Man, and Retro Games!",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/dookieshed.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/dookieshed-bnr.jpg"
+        },
+        {
+          "name": "LDShadowLady",
+          "internal": "ldshadowlady",
+          "heading": "A proud member of Pixel Pact.",
+          "description": "Lizzie (aka LDShadowLady) love cats, anything cute, Minecraft, horror games, puzzle games, MMORPGs and first-person shooters!",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/ld-shadow-lady.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/ld-shadow-lady-bnr.jpg"
+        },
+        {
+          "name": "littlelizardgaming",
+          "internal": "littlelizardgaming",
+          "heading": "Minecraft Xbox 360, Pixelmon, Minecraft Dinosaurs!",
+          "description": "We do all forms of Minecraft and have lots of fun in the process! Come join us as we go on a series of crazy funfilled adventures!",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/little-lizard-gaming.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/little-lizard-gaming-bnr.jpg"
+        },
+        {
+          "name": "wartekgaming",
+          "internal": "wartekgaming",
+          "heading": "Youtuber et Killfeeder Suisse ! Si tu aime le sniper et Call of Duty, ma chaîne est faite pour toi !",
+          "description": "Retrouve mes montages, mes parties commentées, des tutoriels, des Top 10 Kill et j'en passe !",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/wartek.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/wartek-bnr.jpg"
+        },
+        {
+          "name": "WowCrendor",
+          "internal": "wowcrendor",
+          "heading": "I will make you laugh and you will like it.",
+          "description": "",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/wowcrendor.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/wowcrendor-bnr.jpg"
+        },
+        {
+          "name": "chaoticmonki",
+          "internal": "chaoticmonki",
+          "heading": "Video Games. Stories. That's roughly what goes on here. Pull up a chair and sit on it.",
+          "description": "",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/chaotic-monki.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/chaotic-monki-bnr.jpg"
+        },
+        {
+          "name": "cinnamontoastken",
+          "internal": "cinnamontoastken",
+          "heading": "I play video games...LOTS of video games :D",
+          "description": "",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/cinnamon-toast-ken.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/cinnamon-toast-ken-bnr.jpg"
+        },
+        {
+          "name": "joshjepson",
+          "internal": "joshjepson",
+          "heading": "My name is Josh Jepson, but you knew that already!",
+          "description": "This channel is devoted to my love of video games. New or old, next-gen or classic; I love video games, and I want to share that with all of you! I can't thank you all enough for all your support the past couple of years!",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/josh-jepson.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/josh-jepson-bnr.jpg"
+        },
+        {
+          "name": "AshleyMarieeGaming",
+          "internal": "ashleymarieegaming",
+          "heading": "Hey there!",
+          "description": "Welcome to my channel, a magical and wonderful place where I post videos of me playing games and failing at them. All for your entertainment.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/ashley-mariee-gaming.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/ashley-mariee-gaming-bnr.jpg"
+        },
+        {
+          "name": "challengeacceptedinc",
+          "internal": "challengeacceptedinc",
+          "heading": "Videos released every day!",
+          "description": "A group of pals who enjoy playing and talking about video games. All of our content is aimed at having fun!\r\nThe crew:\r\n-Aphmau\r\n-Satiel\r\n-Dom",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/challenge-accepted.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/challenge-accepted-bnr.jpg"
+        },
+        {
+          "name": "JimSterling",
+          "internal": "jimsterling",
+          "heading": "The YouTube home of videogame not-journalist Jim Sterling.",
+          "description": "A game critic and raconteur, he reviews videogames and hosts Jimquisition on The Escapist, he is one third of The Dismal Jesters podcast, and he is trying to understand this YouTube thing!",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/Jimsterling.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/Jimsterling-bnr.jpg"
+        },
+        {
+          "name": "Stampylonghead",
+          "internal": "stampylonghead",
+          "heading": "Hello. Welcome to my channel. My name is Stampy.",
+          "description": "I upload lets plays on a variety of different games including one Minecraft video every day. I always have fun making my videos and if you decide to stick around, hopefully you will too.\r\n- Mr. Stampy Cat.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/StompyTN.png",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/Stompy-banner.png"
+        },
+        {
+          "name": "iBallisticSquid",
+          "internal": "iballisticsquid",
+          "heading": "The Real Squid. The Best Squid.",
+          "description": "I make Minecraft Xbox video's & love all of my subscribers :)",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/iballisticsquid_TN.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/iballisticsquid_banner.jpg"
+        },
+        {
+          "name": "SlamaCowCreations",
+          "internal": "slamacowcreations",
+          "heading": "Hello! My name is Steven and I make 3D animations!",
+          "description": "They come out monthly (almost) because they take a lot of time to make. I'm in the process of learning 3D animation still so there are a lot of aspects I need to get better at. I'll slowly be moving into more original content within next year or two to start challenging myself more. Maybe even develop an original series outside Minecraft, who knows! Thanks for watching and subscribing!",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/SlamacowcreationsTN.jpg",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/Slamacowcreations_banner.png"
+        },
+        {
+          "name": "captainsparklez",
+          "internal": "captainsparklez",
+          "heading": "Let's plays, animations, music videos, and other video game related stuff.",
+          "description": "Stick around and enjoy the show!",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/CaptainSparklez_TN.png",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/CaptainSparklez_banner.png"
+        },
+        {
+          "name": "gbay99",
+          "internal": "gbay99",
+          "heading": "Welcome! This is a League of Legends channel that is focused on making you a better player.",
+          "description": "I try to teach you things you probably didn't know. Things that NO other Youtuber has to offer and things that will help you win games, gain ELO, and hopefully things that will just help you throughout life.\r\nSometimes I teach you about other stuff too though! I enjoy playing all sorts of games and love sharing my knowledge with everyone.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/gbay99_TN.png",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/gbay99_banner.jpg"
+        },
+        {
+          "name": "thebajancanadian",
+          "internal": "thebajancanadian",
+          "heading": "Hungry? Thirsty? Welcome to my fridge. In Benja We Trust.",
+          "description": "I upload Minecraft videos, and love to make competitive minigames out of it! You can find daily Minecraft PvP, frequent Modded Survival Let's Plays, Xbox Playthrough, and occasional Mod Showcases on my channel :)\r\nWe're talking Hunger Games Survival, Minecraft Xbox 360, Battle-Dome, Capture the Wool, Race for Wool, Pixelmon (Pokemon Mod), and Parkour!",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/TheBajanCanadian_TN.png",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/TheBajanCanadian_banner.png"
+        },
+        {
+          "name": "sidestrafe",
+          "internal": "sidestrafe",
+          "heading": "Quality video commentary and entertainment on YouTube!",
+          "description": "",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/SideStrafe_TN.png",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/SideStrafe_banner.png"
+        },
+        {
+          "name": "continueshow",
+          "internal": "continueshow",
+          "heading": "We play retro games & decide do we stop playing or continue? New episodes every Wednesday.",
+          "description": "",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/ContinueShow_TN.png",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/ContinueShow_banner.png"
+        },
+        {
+          "name": "lucahjin",
+          "internal": "lucahjin",
+          "heading": "A nerdy gal that's in love with gaming, old and new! I'll do my best to entertain you!",
+          "description": "I tend to take game suggestions from my audience, which usually results in me blindly mucking about and swearing a bit. Maybe more than a bit.",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/lucahjin_TN.png",
+          "banner_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/lucahjin_banner_hd.png"
+        }
+      ],
+      "category_style": "rectangleBanner"
+    },
+    {
+      "name": "Games",
+      "internal": "games",
+      "heading": null,
+      "description": null,
+      "image_url": null,
+      "tags": [
+        {
+          "name": "Amnesia",
+          "internal": "amnesia",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/amnesia.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Blood Bowl",
+          "internal": "blood-bowl",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/blood-bowl.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Castle Crashers",
+          "internal": "castle-crashers",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/castle-crashers.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Dead Space 3",
+          "internal": "dead-space-3",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/dead-space-3.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Deadpool",
+          "internal": "deadpool",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/deadpool.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "DOTA 2",
+          "internal": "dota-2",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/dota-2.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Dungeons and Dragons",
+          "internal": "dungeons-and-dragons",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/dungeons-and-dragons.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Guns of Icarus",
+          "internal": "guns-of-icarus",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/guns-of-icarus.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Hawken",
+          "internal": "hawken",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/hawken.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Just Dance",
+          "internal": "just-dance",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/just-dance.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "League of Legends",
+          "internal": "league-of-legends",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/league-of-legends.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Mario Kart",
+          "internal": "mario-kart",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/mario-kart.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Megaman",
+          "internal": "megaman",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/megaman.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Metal Gear",
+          "internal": "metal-gear",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/metal-gear.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Minecraft",
+          "internal": "minecraft",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/minecraft.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Mortal Kombat",
+          "internal": "mortal-kombat",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/mortal-kombat.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Paranoiac",
+          "internal": "paranoiac",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/paranoiac.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Pokemon",
+          "internal": "pokemon",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/pokemon.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Portal",
+          "internal": "portal",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/portal.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Portal 2",
+          "internal": "portal-2",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/portal-2.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Resident Evil",
+          "internal": "resident-evil",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/resident-evil.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Slender",
+          "internal": "slender",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/slender.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Sonic The Hedgehog",
+          "internal": "sonic-the-hedgehog",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/sonic-the-hedgehog.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "StarCraft 2",
+          "internal": "starcraft-2",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/starcraft-2.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Starfox",
+          "internal": "starfox",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/starfox.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Super Mario",
+          "internal": "super-mario",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/super-mario.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Surgeon Simulator 2013",
+          "internal": "surgeon-simulator-2013",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/surgeon-simulator-2013.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "The Curse of Blackwater",
+          "internal": "the-curse-of-blackwater",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/the-curse-of-blackwater.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "The Last Of Us",
+          "internal": "the-last-of-us",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/the-last-of-us.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "The Legend of Zelda",
+          "internal": "the-legend-of-zelda",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/the-legend-of-zelda.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "The Witch's House",
+          "internal": "the-witchs-house",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/the-witchs-house.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "Tomb Raider",
+          "internal": "tomb-raider",
+          "heading": "",
+          "description": "",
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/tomb-raider.jpg",
+          "banner_url": null
+        },
+        {
+          "name": "XCOM",
+          "internal": "xcom",
+          "heading": null,
+          "description": null,
+          "image_url": "https://d2wfjdhvqgsqdc.cloudfront.net/Site-1003/categories/xcom.jpg",
+          "banner_url": null
+        }
+      ],
+      "category_style": "rectangleThumbnail"
+    },
+    {
+      "name": "Tags",
+      "internal": "tags",
+      "heading": null,
+      "description": null,
+      "image_url": null,
+      "tags": [
+        {
+          "name": "Action",
+          "internal": "action",
+          "heading": null,
+          "description": null,
+          "image_url": null,
+          "banner_url": null
+        },
+        {
+          "name": "Comedy",
+          "internal": "comedy",
+          "heading": null,
+          "description": null,
+          "image_url": null,
+          "banner_url": null
+        },
+        {
+          "name": "E3",
+          "internal": "e3",
+          "heading": null,
+          "description": null,
+          "image_url": null,
+          "banner_url": null
+        },
+        {
+          "name": "Horror",
+          "internal": "horror",
+          "heading": null,
+          "description": null,
+          "image_url": null,
+          "banner_url": null
+        },
+        {
+          "name": "Information",
+          "internal": "information",
+          "heading": null,
+          "description": null,
+          "image_url": null,
+          "banner_url": null
+        },
+        {
+          "name": "Music",
+          "internal": "music",
+          "heading": null,
+          "description": null,
+          "image_url": null,
+          "banner_url": null
+        },
+        {
+          "name": "Pax",
+          "internal": "pax",
+          "heading": null,
+          "description": null,
+          "image_url": null,
+          "banner_url": null
+        },
+        {
+          "name": "Review",
+          "internal": "review",
+          "heading": null,
+          "description": null,
+          "image_url": null,
+          "banner_url": null
+        }
+      ],
+      "category_style": "flatTitle"
+    }
+  ]
+}
