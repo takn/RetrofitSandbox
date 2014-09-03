@@ -54,6 +54,7 @@ public class MyActivity extends Activity
         //INITIALIZE MKRApi.
         mApiManager = new MKRApi(this.getApplicationContext());
         EventBus.getDefault().register(this);
+        EventBus.getDefault().registerSticky(this);
     }
 
     @Override
@@ -87,6 +88,13 @@ public class MyActivity extends Activity
 
     public void onEventMainThread(UserFeedResponse response) {
         Log.d(TAG, "feed data our data::" + response.data);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        EventBus.getDefault().post(new UserFeedRequest());
+        EventBus.getDefault().post(new VideoDetailRequest("Mzwf4Ket9Uqx"));
     }
 
     public void onSectionAttached(int number) {

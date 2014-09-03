@@ -22,8 +22,8 @@ import rx.schedulers.Schedulers;
 /**
  * Retrieves data and manages caches.
  * Requests are furbished in the following order:
- * 1. Is it in the data mem cache?
- * 2. Is it in the db?
+ * 1. Is it in the data lru mem cache?
+ * 2. Is it in the db? Provigen content provider
  * 3. Ask Retrofit for the data.
  * Created by nelsonramirez on 9/1/14.
  */
@@ -46,7 +46,7 @@ public class MKRApi {
         mContext = null;
     }
 
-    public void onEventMainThread(UserFeedRequest request) {
+    public void onEvent(UserFeedRequest request) {
         if (mUserFeedClient == null) {
             mUserFeedClient = new UserFeedApiClient(mContext);
         }
@@ -55,9 +55,11 @@ public class MKRApi {
                 .subscribe(new InternalUserFeedObserver());
     }
 
-    public void onEventMainThread(VideoDetailRequest request) {
+    //TODO need to set expiration rules.
+    public void onEvent(VideoDetailRequest request) {
         Log.d(TAG, "Detail request received with id:" + request.id);
-
+        //TODO abstract cache logic so we don't have to repeat it all the time. although most
+        //requests will be different
         VideoDetail vid = mVideoLRUCache.get(request.id);
         if (vid != null) {
             Log.d(TAG, "lru cache hit for::" + request.id);
@@ -89,12 +91,11 @@ public class MKRApi {
     class InternalVideoDetailObserver extends NetworkAwareObserver<VideoDetail> {
         @Override
         public void onCompleted() {
-            Log.d("InternalVideoDetailObserver", "InternalVideoDetailObserver.onCompleted()");
+            Log.i("InternalVideoDetailObserver", "InternalVideoDetailObserver.onCompleted()");
         }
 
         @Override
         public void onNext(VideoDetail videoDetail) {
-            Log.d("InternalVideoDetailObserver", "InternalVideoDetailObserver.onNext()");
             //add results to LRU cache
             mVideoLRUCache.put(videoDetail.code, videoDetail);
             //add results to database
@@ -113,9 +114,9 @@ public class MKRApi {
 
         @Override
         public void onNext(Feed feed) {
+            //TODO we probably don't need to wrap the data.. could just post it, but it may be
             EventBus.getDefault().postSticky(new UserFeedResponse<Feed>(feed));
         }
     }
-    ///
 }
 
