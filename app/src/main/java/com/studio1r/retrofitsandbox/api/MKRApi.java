@@ -16,6 +16,8 @@ import com.studio1r.retrofitsandbox.api.clients.UserFeedApiClient;
 import com.studio1r.retrofitsandbox.api.clients.VideoDetailApiClient;
 import com.studio1r.retrofitsandbox.db.DBHelper;
 
+import java.util.List;
+
 import de.greenrobot.event.EventBus;
 import rx.schedulers.Schedulers;
 
@@ -100,6 +102,7 @@ public class MKRApi {
             mVideoLRUCache.put(videoDetail.code, videoDetail);
             //add results to database
             DBHelper.insertVideoDetail(mContext, videoDetail);
+            DBHelper.bulkInsert(mContext);
             EventBus.getDefault().post(new VideoDetailResponse<VideoDetail>(videoDetail));
 
         }
