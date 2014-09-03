@@ -1,5 +1,7 @@
 package com.studio1r.retrofitsandbox.api;
 
+import android.util.Log;
+
 import com.studio1r.retrofitsandbox.Constants;
 
 import java.security.InvalidKeyException;
@@ -20,6 +22,7 @@ public class APIConfiguration {
     // mobileapi.makerstudios.com
     //TODO host based on dev setting...
     private final static String host = "stagemobileapi.makerstudios.com";
+//    private final static String host = "localhost:8081";
     private final static String path = Constants.VERSION;
     public final static String sitecode = Constants.SITE_CODE;
     public final static String videoPrefix = "polarisgo.com/video/";
@@ -70,9 +73,12 @@ public class APIConfiguration {
     }
 
     public static RequestInterceptor requestInterceptor = new RequestInterceptor() {
+        public static final String TAG = "request";
+
         @Override
         public void intercept(RequestFacade request) {
-            request.addEncodedQueryParam("authorization", encode(request.toString()));
+            request.addQueryParam("authorization",
+                    encode("http://stagemobileapi.makerstudios.com/v1/polaris/video/Mzwf4Ket9Uqx"));
         }
     };
 }

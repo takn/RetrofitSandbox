@@ -1,6 +1,7 @@
 package com.studio1r.retrofitsandbox.api;
 
 import android.content.Context;
+import android.support.v4.util.LruCache;
 import android.util.Log;
 
 import com.studio1r.retrofitsandbox.Constants;
@@ -9,6 +10,7 @@ import com.studio1r.retrofitsandbox.api.model.VideoDetail;
 import com.studio1r.retrofitsandbox.api.requests.VideoDetailRequest;
 import com.studio1r.retrofitsandbox.api.responses.VideoDetailResponse;
 import com.studio1r.retrofitsandbox.api.video.VideoDetailApiClient;
+import com.studio1r.retrofitsandbox.db.DBHelper;
 
 import de.greenrobot.event.EventBus;
 import rx.schedulers.Schedulers;
@@ -24,12 +26,14 @@ import rx.schedulers.Schedulers;
 public class MKRApi {
 
     public static String TAG = MKRApi.class.getName();
+    private final LruCache<String, VideoDetail> mVideoLRUCache;
     private Context mContext;
     private VideoDetailApiClient mVidDetailClient;
 
     public MKRApi(Context context) {
         mContext = context;
         EventBus.getDefault().register(this);
+        mVideoLRUCache = new LruCache<String, VideoDetail>(Constants.MAX_CACHE_ENTRIES);
     }
 
     public void destroy() {
@@ -40,20 +44,31 @@ public class MKRApi {
     public void onEventMainThread(VideoDetailRequest request) {
         Log.d(TAG, "Detail request received with id:" + request.id);
 
-        if (mVidDetailClient == null) {
-            //use mock or real here
-            //TODO check memory cache
-            //TODO check database
-            if (Constants.USE_MOCK_DATA) {
-                try {
-                    mVidDetailClient = new VideoDetailApiClient(mContext);
-                    mVidDetailClient.getVideoDetail(request.id)
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(Schedulers.computation())
-                            .subscribe(new InternalVideoDetailObserver());
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
+        if (Constants.USE_MOCK_DATA) {
+            try {
+                //TODO when we pass in a context the api client furnishes mock data,
+                //but this is confusing! make a proper MockClient.
+                mVidDetailClient = new VideoDetailApiClient(mContext);
+                mVidDetailClient.getVideoDetail(request.id)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(Schedulers.computation())
+                        .subscribe(new InternalVideoDetailObserver());
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        } else {
+            VideoDetail vid = mVideoLRUCache.get(request.id);
+            if (vid != null) {
+                Log.d(TAG, "lru cache hit for::" + request.id);
+                EventBus.getDefault().post(new VideoDetailResponse(vid));
+                return;
+            }
+
+            vid = DBHelper.getVideoDetail(mContext, request.id);
+            if (vid != null) {
+                Log.d(TAG, "database cache hit for::" + request.id);
+                EventBus.getDefault().post(new VideoDetailResponse(vid));
+                return;
             } else {
                 mVidDetailClient = new VideoDetailApiClient();
                 mVidDetailClient.getVideoDetail(request.id)
@@ -69,7 +84,8 @@ public class MKRApi {
     /**
      * INTERNAL OBSERVERS
      */
-    public static class InternalVideoDetailObserver extends NetworkAwareObserver<VideoDetail> {
+
+    class InternalVideoDetailObserver extends NetworkAwareObserver<VideoDetail> {
         @Override
         public void onCompleted() {
             Log.d("InternalVideoDetailObserver", "InternalVideoDetailObserver.onCompleted()");
@@ -78,7 +94,10 @@ public class MKRApi {
         @Override
         public void onNext(VideoDetail videoDetail) {
             Log.d("InternalVideoDetailObserver", "InternalVideoDetailObserver.onNext()");
-            //TODO add to database
+            //add results to LRU cache
+            mVideoLRUCache.put(videoDetail.code, videoDetail);
+            //add results to database
+            DBHelper.insertVideoDetail(mContext, videoDetail);
             EventBus.getDefault().post(new VideoDetailResponse(videoDetail));
 
         }

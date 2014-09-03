@@ -12,14 +12,19 @@ import com.tjeannin.provigen.ProviGenProvider;
  * Created by nelsonramirez on 9/1/14.
  */
 public class VideoDataProvider extends ProviGenProvider {
+    private static Class[] contracts = new Class[]{VideoDetailContract.class};
+    private VideoDetailDbOpenHelper mVideoOpenHelper;
+
     @Override
     public SQLiteOpenHelper openHelper(Context context) {
-        return null;
+        mVideoOpenHelper = new VideoDetailDbOpenHelper(context, "mkrCp", null, 1, contractClasses());
+        return mVideoOpenHelper;
     }
+
 
     @Override
     public Class[] contractClasses() {
-        return new Class[]{VideoDetailContract.class};
+        return contracts;
     }
 
     private static final class VideoDetailDbOpenHelper extends ProviGenOpenHelper {

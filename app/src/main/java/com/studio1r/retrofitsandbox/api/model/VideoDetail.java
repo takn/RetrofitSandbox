@@ -3,6 +3,7 @@ package com.studio1r.retrofitsandbox.api.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class VideoDetail extends FeedItem implements Serializable {
@@ -26,7 +27,7 @@ public class VideoDetail extends FeedItem implements Serializable {
     @SerializedName("uploaded_at")
     public long uploadedAt;
     public int exclusive;
-    public Tag[] tags;
+    public ArrayList<Tag> tags;
     public Image images;
     @SerializedName("play_urls")
     public PlayUrl playUrls;
@@ -34,23 +35,4 @@ public class VideoDetail extends FeedItem implements Serializable {
     public VideoDetail() {
     }
 
-    @Override
-    public String toString() {
-        return "VideoDetail{" +
-                "auditudeVideoId='" + auditudeVideoId + '\'' +
-                ", title='" + title + '\'' +
-                ", showName='" + showName + '\'' +
-                ", showNameInternal='" + showNameInternal + '\'' +
-                ", episode='" + episode + '\'' +
-                ", duration='" + duration + '\'' +
-                ", viewCount='" + viewCount + '\'' +
-                ", originalPublishedAt='" + originalPublishedAt + '\'' +
-                ", description='" + description + '\'' +
-                ", uploadedAt=" + uploadedAt +
-                ", exclusive=" + exclusive +
-                ", tags=" + Arrays.toString(tags) +
-                ", images=" + images +
-                ", playUrls=" + playUrls +
-                '}';
-    }
 }

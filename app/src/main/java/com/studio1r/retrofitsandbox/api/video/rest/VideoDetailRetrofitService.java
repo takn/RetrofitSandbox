@@ -4,6 +4,7 @@ import com.studio1r.retrofitsandbox.api.model.VideoDetail;
 
 import retrofit.http.GET;
 import retrofit.http.Path;
+import retrofit.http.Query;
 import rx.Observable;
 
 /**
@@ -17,7 +18,8 @@ public interface VideoDetailRetrofitService {
      * @return returns details for a single video
      */
     @GET("/video/{video_identifier}")
-    Observable<VideoDetail> getVideo(@Path("video_identifier") String id);
+    Observable<VideoDetail> getVideo(@Path("video_identifier") String id,
+    @Query("authorization") String auth);
 }
 
 

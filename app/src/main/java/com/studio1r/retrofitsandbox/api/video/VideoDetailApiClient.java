@@ -17,6 +17,7 @@ import java.lang.ref.WeakReference;
 
 import retrofit.RestAdapter;
 import retrofit.http.Path;
+import retrofit.http.Query;
 import rx.Observable;
 
 /**
@@ -30,7 +31,6 @@ public class VideoDetailApiClient {
     public VideoDetailApiClient() {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint(APIConfiguration.getEndpoint())
-                .setRequestInterceptor(APIConfiguration.requestInterceptor)
                 .build();
 
         restAdapter.setLogLevel(RestAdapter.LogLevel.BASIC);
@@ -39,7 +39,8 @@ public class VideoDetailApiClient {
     }
 
     /**
-     * This constructor is used for dev only. It will return mocked objects pulled from resources
+     * This constructor is used for dev only.
+     * It will return mocked objects pulled from resources
      *
      * @param context
      */
@@ -57,11 +58,20 @@ public class VideoDetailApiClient {
 
     public Observable<VideoDetail> getVideoDetail(String id) {
         if (isMock) {
-            return new MockVideoDetail(this.context.get()).getVideo(id);
+            return new MockVideoDetail(this.context.get()).getVideo(id, "");
         } else {
-            return mVideoDetailClient.getVideo(id);
+            //auth needs to be done on the fly to emcompass full url
+            return mVideoDetailClient.getVideo(id, getAuthHash(id));
         }
     }
+
+    private String getAuthHash(String id) {
+        return APIConfiguration.encode(APIConfiguration.getEndpoint() + "/video/" + id);
+    }
+
+    /**
+     * MOCK implementation
+     */
 
     private static class MockVideoDetail implements VideoDetailRetrofitService {
 
@@ -69,7 +79,6 @@ public class VideoDetailApiClient {
 
         public MockVideoDetail(Context context) {
             try {
-//                InputStream is = ;
                 BufferedReader br = new BufferedReader(new InputStreamReader(context.
                         getAssets().open("videodetail.json")));
                 Gson gson = new Gson();
@@ -81,7 +90,8 @@ public class VideoDetailApiClient {
         }
 
         @Override
-        public Observable<VideoDetail> getVideo(@Path("video_identifier") String id) {
+        public Observable<VideoDetail> getVideo(@Path("video_identifier") String id,
+                                                @Query("authorization") String auth) {
             //read json file
             return Observable.from(mVideoDetail);
         }
