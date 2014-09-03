@@ -1,4 +1,4 @@
-package com.studio1r.retrofitsandbox.db;
+package com.studio1r.retrofitsandbox.db.contracts;
 
 import com.tjeannin.provigen.ProviGenBaseContract;
 import com.tjeannin.provigen.annotation.Column;

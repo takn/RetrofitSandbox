@@ -1,21 +1,20 @@
-package com.studio1r.retrofitsandbox.api.video;
+package com.studio1r.retrofitsandbox.api.clients;
 
 import android.content.Context;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.studio1r.retrofitsandbox.BuildConfig;
+import com.studio1r.retrofitsandbox.Constants;
 import com.studio1r.retrofitsandbox.api.APIConfiguration;
 import com.studio1r.retrofitsandbox.api.model.VideoDetail;
-import com.studio1r.retrofitsandbox.api.video.rest.VideoDetailRetrofitService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.ref.WeakReference;
 
 import retrofit.RestAdapter;
+import retrofit.http.GET;
 import retrofit.http.Path;
 import retrofit.http.Query;
 import rx.Observable;
@@ -28,15 +27,18 @@ public class VideoDetailApiClient {
     private WeakReference<Context> context;
     private boolean isMock;
 
-    public VideoDetailApiClient() {
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint(APIConfiguration.getEndpoint())
-                .build();
+    public interface VideoDetailRetrofitService {
 
-        restAdapter.setLogLevel(RestAdapter.LogLevel.BASIC);
-        mVideoDetailClient = restAdapter.create(
-                VideoDetailRetrofitService.class);
+        /**
+         * http://{host}/{version}/{sitecode}/video/{video_identifier}
+         *
+         * @return returns details for a single video
+         */
+        @GET("/video/{video_identifier}")
+        Observable<VideoDetail> getVideo(@Path("video_identifier") String id,
+                                         @Query("authorization") String auth);
     }
+
 
     /**
      * This constructor is used for dev only.
@@ -44,14 +46,19 @@ public class VideoDetailApiClient {
      *
      * @param context
      */
-    public VideoDetailApiClient(Context context) throws IllegalAccessException {
-        if (BuildConfig.DEBUG) {
+    public VideoDetailApiClient(Context context) {
+        if (Constants.USE_MOCK_DATA) {
             this.context = new WeakReference<Context>(context);
             isMock = true;
             mVideoDetailClient = null;
         } else {
-            throw new IllegalAccessException("you can only use mocks in debug builds." +
-                    "this is for your own good!");
+            RestAdapter restAdapter = new RestAdapter.Builder()
+                    .setEndpoint(APIConfiguration.getEndpoint())
+                    .build();
+
+            restAdapter.setLogLevel(RestAdapter.LogLevel.BASIC);
+            mVideoDetailClient = restAdapter.create(
+                    VideoDetailRetrofitService.class);
         }
     }
 

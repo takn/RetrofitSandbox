@@ -14,7 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.studio1r.retrofitsandbox.api.MKRApi;
+import com.studio1r.retrofitsandbox.api.requests.UserFeedRequest;
 import com.studio1r.retrofitsandbox.api.requests.VideoDetailRequest;
+import com.studio1r.retrofitsandbox.api.responses.UserFeedResponse;
 import com.studio1r.retrofitsandbox.api.responses.VideoDetailResponse;
 
 import de.greenrobot.event.EventBus;
@@ -72,12 +74,19 @@ public class MyActivity extends Activity
                 .commit();
 
         if (position == 0) {
+            EventBus.getDefault().post(new UserFeedRequest());
+        }
+        if (position == 1) {
             EventBus.getDefault().post(new VideoDetailRequest("Mzwf4Ket9Uqx"));
         }
     }
 
     public void onEventMainThread(VideoDetailResponse response) {
         Log.d(TAG, "Whomp whomp!!! here is our data::" + response.data);
+    }
+
+    public void onEventMainThread(UserFeedResponse response) {
+        Log.d(TAG, "feed data our data::" + response.data);
     }
 
     public void onSectionAttached(int number) {

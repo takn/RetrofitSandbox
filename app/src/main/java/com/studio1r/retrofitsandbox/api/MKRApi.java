@@ -6,10 +6,14 @@ import android.util.Log;
 
 import com.studio1r.retrofitsandbox.Constants;
 import com.studio1r.retrofitsandbox.Observers.NetworkAwareObserver;
+import com.studio1r.retrofitsandbox.api.model.Feed;
 import com.studio1r.retrofitsandbox.api.model.VideoDetail;
+import com.studio1r.retrofitsandbox.api.requests.UserFeedRequest;
 import com.studio1r.retrofitsandbox.api.requests.VideoDetailRequest;
+import com.studio1r.retrofitsandbox.api.responses.UserFeedResponse;
 import com.studio1r.retrofitsandbox.api.responses.VideoDetailResponse;
-import com.studio1r.retrofitsandbox.api.video.VideoDetailApiClient;
+import com.studio1r.retrofitsandbox.api.clients.UserFeedApiClient;
+import com.studio1r.retrofitsandbox.api.clients.VideoDetailApiClient;
 import com.studio1r.retrofitsandbox.db.DBHelper;
 
 import de.greenrobot.event.EventBus;
@@ -29,6 +33,7 @@ public class MKRApi {
     private final LruCache<String, VideoDetail> mVideoLRUCache;
     private Context mContext;
     private VideoDetailApiClient mVidDetailClient;
+    private UserFeedApiClient mUserFeedClient;
 
     public MKRApi(Context context) {
         mContext = context;
@@ -41,43 +46,39 @@ public class MKRApi {
         mContext = null;
     }
 
+    public void onEventMainThread(UserFeedRequest request) {
+        if (mUserFeedClient == null) {
+            mUserFeedClient = new UserFeedApiClient(mContext);
+        }
+        mUserFeedClient.getUserFeed().subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.computation())
+                .subscribe(new InternalUserFeedObserver());
+    }
+
     public void onEventMainThread(VideoDetailRequest request) {
         Log.d(TAG, "Detail request received with id:" + request.id);
 
-        if (Constants.USE_MOCK_DATA) {
-            try {
-                //TODO when we pass in a context the api client furnishes mock data,
-                //but this is confusing! make a proper MockClient.
-                mVidDetailClient = new VideoDetailApiClient(mContext);
-                mVidDetailClient.getVideoDetail(request.id)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(Schedulers.computation())
-                        .subscribe(new InternalVideoDetailObserver());
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        } else {
-            VideoDetail vid = mVideoLRUCache.get(request.id);
-            if (vid != null) {
-                Log.d(TAG, "lru cache hit for::" + request.id);
-                EventBus.getDefault().post(new VideoDetailResponse(vid));
-                return;
-            }
-
-            vid = DBHelper.getVideoDetail(mContext, request.id);
-            if (vid != null) {
-                Log.d(TAG, "database cache hit for::" + request.id);
-                EventBus.getDefault().post(new VideoDetailResponse(vid));
-                return;
-            } else {
-                mVidDetailClient = new VideoDetailApiClient();
-                mVidDetailClient.getVideoDetail(request.id)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(Schedulers.computation())
-                        .subscribe(new InternalVideoDetailObserver());
-
-            }
+        VideoDetail vid = mVideoLRUCache.get(request.id);
+        if (vid != null) {
+            Log.d(TAG, "lru cache hit for::" + request.id);
+            EventBus.getDefault().post(new VideoDetailResponse<VideoDetail>(vid));
+            return;
         }
+
+        vid = DBHelper.getVideoDetail(mContext, request.id);
+        if (vid != null) {
+            Log.d(TAG, "database cache hit for::" + request.id);
+            EventBus.getDefault().post(new VideoDetailResponse<VideoDetail>(vid));
+            return;
+        } else {
+            mVidDetailClient = new VideoDetailApiClient(mContext);
+            mVidDetailClient.getVideoDetail(request.id)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(Schedulers.computation())
+                    .subscribe(new InternalVideoDetailObserver());
+
+        }
+
 
     }
 
@@ -98,8 +99,21 @@ public class MKRApi {
             mVideoLRUCache.put(videoDetail.code, videoDetail);
             //add results to database
             DBHelper.insertVideoDetail(mContext, videoDetail);
-            EventBus.getDefault().post(new VideoDetailResponse(videoDetail));
+            EventBus.getDefault().post(new VideoDetailResponse<VideoDetail>(videoDetail));
 
+        }
+    }
+
+    class InternalUserFeedObserver extends NetworkAwareObserver<Feed> {
+
+        @Override
+        public void onCompleted() {
+
+        }
+
+        @Override
+        public void onNext(Feed feed) {
+            EventBus.getDefault().postSticky(new UserFeedResponse<Feed>(feed));
         }
     }
     ///

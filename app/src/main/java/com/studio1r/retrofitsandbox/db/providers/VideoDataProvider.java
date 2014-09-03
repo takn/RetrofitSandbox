@@ -1,10 +1,10 @@
-package com.studio1r.retrofitsandbox.db.video;
+package com.studio1r.retrofitsandbox.db.providers;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.studio1r.retrofitsandbox.db.video.contract.VideoDetailContract;
+import com.studio1r.retrofitsandbox.db.contracts.VideoDetailContract;
 import com.tjeannin.provigen.ProviGenOpenHelper;
 import com.tjeannin.provigen.ProviGenProvider;
 

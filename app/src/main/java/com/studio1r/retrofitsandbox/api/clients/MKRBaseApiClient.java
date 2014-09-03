@@ -1,4 +1,4 @@
-package com.studio1r.retrofitsandbox.api;
+package com.studio1r.retrofitsandbox.api.clients;
 
 /**
  * Created by nelsonramirez on 9/3/14.

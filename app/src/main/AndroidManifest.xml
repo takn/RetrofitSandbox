@@ -19,7 +19,7 @@
         </activity>
         <provider
             android:authorities="com.studio1r.retrofitsandbox"
-            android:name="com.studio1r.retrofitsandbox.db.video.VideoDataProvider" />
+            android:name=".db.providers.VideoDataProvider" />
     </application>
 
 </manifest>

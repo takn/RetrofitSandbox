@@ -1,8 +1,7 @@
-package com.studio1r.retrofitsandbox.db.video.contract;
+package com.studio1r.retrofitsandbox.db.contracts;
 
 import android.net.Uri;
 
-import com.studio1r.retrofitsandbox.db.MKRBaseContract;
 import com.tjeannin.provigen.annotation.ContentUri;
 
 /**

@@ -7,7 +7,7 @@ import android.util.Base64;
 import android.util.Log;
 
 import com.studio1r.retrofitsandbox.api.model.VideoDetail;
-import com.studio1r.retrofitsandbox.db.video.contract.VideoDetailContract;
+import com.studio1r.retrofitsandbox.db.contracts.VideoDetailContract;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
