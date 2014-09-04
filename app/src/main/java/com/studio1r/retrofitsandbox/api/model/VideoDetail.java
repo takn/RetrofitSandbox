@@ -4,9 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class VideoDetail extends FeedItem implements Serializable {
+public class VideoDetail extends Item implements Serializable {
 
     public static final long serialVersionUID = 1L;
 

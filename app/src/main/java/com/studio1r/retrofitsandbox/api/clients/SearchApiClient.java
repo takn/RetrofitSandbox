@@ -21,8 +21,13 @@ public class SearchApiClient {
 
         /**
          * @param searchTerm - the query to be performed
-         * @param filters    -
-         * @return Obvservable search body
+         * @param filters    - Filtering options. Supported options are:
+         *                   order - asc,desc
+         *                   startat - int
+         *                   lmitto - int
+         * @return Obvservable Search search body
+         *
+         * EXAMPLE endpoint
          * //http://devmobileapi.makerstudios.com/v1/{sitecode}/
          * search?q={search_term}&order={sort_order}
          * // [&startat={star_iIndex}][&limitto={limit}]

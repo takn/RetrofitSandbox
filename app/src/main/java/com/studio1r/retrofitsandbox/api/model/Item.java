@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class FeedItem extends MKRBaseModel
+public class Item extends MKRBaseModel
         implements Serializable {
 
     public static final long serialVersionUID = 1L;

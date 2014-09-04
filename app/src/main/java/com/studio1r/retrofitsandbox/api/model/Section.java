@@ -8,6 +8,6 @@ public class Section implements Serializable {
 
     public String name;
     public String internal;
-    public FeedItem[] items;
+    public Item[] items;
 
 }

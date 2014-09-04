@@ -71,7 +71,7 @@ public class VideoDetailApiClient {
             return mVideoDetailClient.getVideo(id, getAuthHash(id));
         }
     }
-
+    //TODO move to Utils or APIConfiguration.
     private String getAuthHash(String id) {
         return APIConfiguration.encode(APIConfiguration.getEndpoint() + "/video/" + id);
     }

@@ -6,17 +6,15 @@ import android.util.Log;
 
 import com.studio1r.retrofitsandbox.Constants;
 import com.studio1r.retrofitsandbox.Observers.NetworkAwareObserver;
+import com.studio1r.retrofitsandbox.api.clients.UserFeedApiClient;
+import com.studio1r.retrofitsandbox.api.clients.VideoDetailApiClient;
 import com.studio1r.retrofitsandbox.api.model.Feed;
 import com.studio1r.retrofitsandbox.api.model.VideoDetail;
 import com.studio1r.retrofitsandbox.api.requests.UserFeedRequest;
 import com.studio1r.retrofitsandbox.api.requests.VideoDetailRequest;
 import com.studio1r.retrofitsandbox.api.responses.UserFeedResponse;
 import com.studio1r.retrofitsandbox.api.responses.VideoDetailResponse;
-import com.studio1r.retrofitsandbox.api.clients.UserFeedApiClient;
-import com.studio1r.retrofitsandbox.api.clients.VideoDetailApiClient;
 import com.studio1r.retrofitsandbox.db.DBHelper;
-
-import java.util.List;
 
 import de.greenrobot.event.EventBus;
 import rx.schedulers.Schedulers;
@@ -102,7 +100,6 @@ public class MKRApi {
             mVideoLRUCache.put(videoDetail.code, videoDetail);
             //add results to database
             DBHelper.insertVideoDetail(mContext, videoDetail);
-            DBHelper.bulkInsert(mContext);
             EventBus.getDefault().post(new VideoDetailResponse<VideoDetail>(videoDetail));
 
         }
@@ -118,6 +115,7 @@ public class MKRApi {
         @Override
         public void onNext(Feed feed) {
             //TODO we probably don't need to wrap the data.. could just post it, but it may be
+            //useful for error handling.
             EventBus.getDefault().postSticky(new UserFeedResponse<Feed>(feed));
         }
     }

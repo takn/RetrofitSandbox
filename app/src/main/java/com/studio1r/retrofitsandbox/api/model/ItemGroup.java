@@ -8,7 +8,7 @@ public class ItemGroup implements Serializable {
 
 	public String name;
 	public String internal;
-	public FeedItem[] items;
+	public Item[] items;
 
 	
 }
