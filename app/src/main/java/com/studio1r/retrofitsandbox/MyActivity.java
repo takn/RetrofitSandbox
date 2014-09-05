@@ -54,7 +54,6 @@ public class MyActivity extends Activity
 
         //INITIALIZE MKRApi.
         mApiManager = new MKRApi(this.getApplicationContext());
-        EventBus.getDefault().register(this);
         EventBus.getDefault().registerSticky(this);
     }
 
@@ -75,12 +74,12 @@ public class MyActivity extends Activity
                 .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
                 .commit();
 
-//        if (position == 0) {
-//            EventBus.getDefault().post(new UserFeedRequest());
-//        }
-//        if (position == 1) {
-//            EventBus.getDefault().post(new VideoDetailRequest("Mzwf4Ket9Uqx"));
-//        }
+        if (position == 0) {
+            EventBus.getDefault().post(new UserFeedRequest());
+        }
+        if (position == 1) {
+            EventBus.getDefault().post(new VideoDetailRequest("Mzwf4Ket9Uqx"));
+        }
     }
 
     public void onEventMainThread(VideoDetailResponse response) {
@@ -94,8 +93,8 @@ public class MyActivity extends Activity
     @Override
     protected void onResume() {
         super.onResume();
-//        EventBus.getDefault().post(new UserFeedRequest());
-//        EventBus.getDefault().post(new VideoDetailRequest("Mzwf4Ket9Uqx"));
+        EventBus.getDefault().post(new UserFeedRequest());
+        EventBus.getDefault().post(new VideoDetailRequest("Mzwf4Ket9Uqx"));
     }
 
     public void onSectionAttached(int number) {
@@ -170,23 +169,18 @@ public class MyActivity extends Activity
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            EventBus.getDefault().post(new UserFeedRequest());
         }
 
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
-            EventBus.getDefault().register(this);
-        }
 
-        public void onEventMainThread(UserFeedResponse<Feed> response) {
 
         }
 
         @Override
         public void onDestroy() {
             super.onDestroy();
-            EventBus.getDefault().unregister(this);
         }
 
 

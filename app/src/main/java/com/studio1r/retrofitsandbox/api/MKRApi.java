@@ -9,7 +9,7 @@ import com.studio1r.retrofitsandbox.Observers.NetworkAwareObserver;
 import com.studio1r.retrofitsandbox.api.clients.UserFeedApiClient;
 import com.studio1r.retrofitsandbox.api.clients.VideoDetailApiClient;
 import com.studio1r.retrofitsandbox.api.model.Feed;
-import com.studio1r.retrofitsandbox.api.model.VideoDetail;
+import com.studio1r.retrofitsandbox.api.model.VideoDetailItem;
 import com.studio1r.retrofitsandbox.api.requests.UserFeedRequest;
 import com.studio1r.retrofitsandbox.api.requests.VideoDetailRequest;
 import com.studio1r.retrofitsandbox.api.responses.UserFeedResponse;
@@ -30,7 +30,7 @@ import rx.schedulers.Schedulers;
 public class MKRApi {
 
     public static String TAG = MKRApi.class.getName();
-    private final LruCache<String, VideoDetail> mVideoLRUCache;
+    private final LruCache<String, VideoDetailItem> mVideoLRUCache;
     private Context mContext;
     private VideoDetailApiClient mVidDetailClient;
     private UserFeedApiClient mUserFeedClient;
@@ -38,7 +38,7 @@ public class MKRApi {
     public MKRApi(Context context) {
         mContext = context;
         EventBus.getDefault().register(this);
-        mVideoLRUCache = new LruCache<String, VideoDetail>(Constants.MAX_CACHE_ENTRIES);
+        mVideoLRUCache = new LruCache<String, VideoDetailItem>(Constants.MAX_CACHE_ENTRIES);
     }
 
     public void destroy() {
@@ -60,17 +60,17 @@ public class MKRApi {
         Log.d(TAG, "Detail request received with id:" + request.id);
         //TODO abstract cache logic so we don't have to repeat it all the time. although most
         //requests will be different
-        VideoDetail vid = mVideoLRUCache.get(request.id);
+        VideoDetailItem vid = mVideoLRUCache.get(request.id);
         if (vid != null) {
             Log.d(TAG, "lru cache hit for::" + request.id);
-            EventBus.getDefault().post(new VideoDetailResponse<VideoDetail>(vid));
+            EventBus.getDefault().post(new VideoDetailResponse<VideoDetailItem>(vid));
             return;
         }
 
         vid = DBHelper.getVideoDetail(mContext, request.id);
         if (vid != null) {
             Log.d(TAG, "database cache hit for::" + request.id);
-            EventBus.getDefault().post(new VideoDetailResponse<VideoDetail>(vid));
+            EventBus.getDefault().post(new VideoDetailResponse<VideoDetailItem>(vid));
             return;
         } else {
             mVidDetailClient = new VideoDetailApiClient(mContext);
@@ -88,19 +88,19 @@ public class MKRApi {
      * INTERNAL OBSERVERS
      */
 
-    class InternalVideoDetailObserver extends NetworkAwareObserver<VideoDetail> {
+    class InternalVideoDetailObserver extends NetworkAwareObserver<VideoDetailItem> {
         @Override
         public void onCompleted() {
             Log.i("InternalVideoDetailObserver", "InternalVideoDetailObserver.onCompleted()");
         }
 
         @Override
-        public void onNext(VideoDetail videoDetail) {
+        public void onNext(VideoDetailItem videoDetailItem) {
             //add results to LRU cache
-            mVideoLRUCache.put(videoDetail.code, videoDetail);
+            mVideoLRUCache.put(videoDetailItem.code, videoDetailItem);
             //add results to database
-            DBHelper.insertVideoDetail(mContext, videoDetail);
-            EventBus.getDefault().post(new VideoDetailResponse<VideoDetail>(videoDetail));
+            DBHelper.insertVideoDetail(mContext, videoDetailItem);
+            EventBus.getDefault().post(new VideoDetailResponse<VideoDetailItem>(videoDetailItem));
 
         }
     }

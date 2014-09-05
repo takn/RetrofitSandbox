@@ -4,12 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Group implements Serializable {
+public class Group extends MKRBaseModel implements Serializable {
 
     public static final long serialVersionUID = 1L;
-
-    public String name;
-    public String internal;
     @SerializedName("group_type")
     public String groupType;
     @SerializedName("fixed_position")

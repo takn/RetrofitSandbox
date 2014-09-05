@@ -20,6 +20,4 @@ public class MKRBaseContract implements ProviGenBaseContract {
     @Column(Column.Type.INTEGER)
     public static final String PREFERRED_SORT_INDEX = "preferred_sort_index";
 
-    @Column(Column.Type.TEXT)
-    public static final String CODE = "_code";
 }

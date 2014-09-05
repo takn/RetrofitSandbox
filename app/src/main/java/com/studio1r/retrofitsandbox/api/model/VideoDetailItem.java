@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class VideoDetail extends Item implements Serializable {
+public class VideoDetailItem extends Item implements Serializable {
 
     public static final long serialVersionUID = 1L;
 
@@ -30,8 +30,5 @@ public class VideoDetail extends Item implements Serializable {
     public Image images;
     @SerializedName("play_urls")
     public PlayUrl playUrls;
-
-    public VideoDetail() {
-    }
 
 }

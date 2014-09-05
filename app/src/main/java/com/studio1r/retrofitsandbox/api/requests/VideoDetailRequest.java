@@ -5,7 +5,7 @@ package com.studio1r.retrofitsandbox.api.requests;
  * {@link com.studio1r.retrofitsandbox.api.MKRApi} MRKApi
  * Created by nelsonramirez on 9/1/14.
  */
-public class VideoDetailRequest extends BaseDataRequest {
+public class VideoDetailRequest {
     public String id;
 
     /**

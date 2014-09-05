@@ -6,7 +6,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.studio1r.retrofitsandbox.Constants;
 import com.studio1r.retrofitsandbox.api.APIConfiguration;
-import com.studio1r.retrofitsandbox.api.model.VideoDetail;
+import com.studio1r.retrofitsandbox.api.model.VideoDetailItem;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -35,7 +35,7 @@ public class VideoDetailApiClient {
          * @return returns details for a single video
          */
         @GET("/video/{video_identifier}")
-        Observable<VideoDetail> getVideo(@Path("video_identifier") String id,
+        Observable<VideoDetailItem> getVideo(@Path("video_identifier") String id,
                                          @Query("authorization") String auth);
     }
 
@@ -63,7 +63,7 @@ public class VideoDetailApiClient {
     }
 
 
-    public Observable<VideoDetail> getVideoDetail(String id) {
+    public Observable<VideoDetailItem> getVideoDetail(String id) {
         if (isMock) {
             return new MockVideoDetail(this.context.get()).getVideo(id, "");
         } else {
@@ -82,14 +82,14 @@ public class VideoDetailApiClient {
 
     private static class MockVideoDetail implements VideoDetailRetrofitService {
 
-        private VideoDetail mVideoDetail;
+        private VideoDetailItem mVideoDetailItem;
 
         public MockVideoDetail(Context context) {
             try {
                 BufferedReader br = new BufferedReader(new InputStreamReader(context.
                         getAssets().open("videodetail.json")));
                 Gson gson = new Gson();
-                mVideoDetail = gson.fromJson(br, VideoDetail.class);
+                mVideoDetailItem = gson.fromJson(br, VideoDetailItem.class);
             } catch (IOException e) {
                 Log.e("ERR", "could not load file!!");
                 e.printStackTrace();
@@ -97,10 +97,10 @@ public class VideoDetailApiClient {
         }
 
         @Override
-        public Observable<VideoDetail> getVideo(@Path("video_identifier") String id,
+        public Observable<VideoDetailItem> getVideo(@Path("video_identifier") String id,
                                                 @Query("authorization") String auth) {
             //read json file
-            return Observable.from(mVideoDetail);
+            return Observable.from(mVideoDetailItem);
         }
     }
 

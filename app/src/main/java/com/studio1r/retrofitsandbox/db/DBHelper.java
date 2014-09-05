@@ -3,11 +3,15 @@ package com.studio1r.retrofitsandbox.db;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.net.Uri;
 import android.util.Base64;
 import android.util.Log;
 
-import com.studio1r.retrofitsandbox.api.model.VideoDetail;
+import com.google.gson.Gson;
+import com.studio1r.retrofitsandbox.api.model.MKRBaseModel;
+import com.studio1r.retrofitsandbox.api.model.VideoDetailItem;
 import com.studio1r.retrofitsandbox.db.contracts.VideoDetailContract;
+import com.studio1r.retrofitsandbox.util.DataUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -24,80 +28,54 @@ public class DBHelper {
 
     private static final String TAG = "DBHelper";
 
-    public static void insertVideoDetail(Context context, VideoDetail video) {
 
-        context.getContentResolver().update(VideoDetailContract.CONTENT_URI,
-                getContentValues(video),
-                VideoDetailContract.CODE + " = ? ", new String[]{video.code});
+    public static void insertVideoDetail(Context context, VideoDetailItem video) {
+        //no need for update logic. Provigen Constraint was defined in DBHelper
+        context.getContentResolver().insert(VideoDetailContract.CONTENT_URI,
+                VideoDetailContract.getContentValues(video));
     }
 
-    private static ContentValues getContentValues(VideoDetail video) {
-        ContentValues cv = new ContentValues();
-        cv.put(VideoDetailContract.INTERNAL, video.code);
-        cv.put(VideoDetailContract.CODE, video.code);
-        cv.put(VideoDetailContract.SERIALIZED_OBJECT, toEncodedString(video));
-        return cv;
-    }
+    //TODO these methods can most likely be generic
 
     /**
-     * Instert a list of videoDetails into the DB
-     * @param mContext
-     * @param videoDetailList
+     * Provides a generic way to insert models into the given Uri
+     *
+     * @param context
+     * @param uri     -
+     * @param data    all Models sublcass MKRBaseModel and implement necessary methods to serialize
      */
-    public static void bulkInsert(Context mContext, List<VideoDetail> videoDetailList) {
-        ContentValues[] cVs = new ContentValues[videoDetailList.size()];
-        for (int i = 0; i < videoDetailList.size(); i++) {
-            VideoDetail videoDetail = videoDetailList.get(i);
-            cVs[i] = getContentValues(videoDetail);
-        }
-        mContext.getContentResolver().bulkInsert(VideoDetailContract.CONTENT_URI, cVs);
+    private static void insertDataToUri(Context context, Uri uri, MKRBaseModel data) {
+
     }
 
 
-    /**
-     * UTIL METHODS
-     */
-
-    private static String toEncodedString(Serializable s) {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        try {
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-            objectOutputStream.writeObject(s);
-            objectOutputStream.close();
-            return new String(Base64.encodeToString(byteArrayOutputStream.toByteArray(), 0));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "";
-    }
-
-    private static Object fromEncodedString(String s) {
-        byte[] data = Base64.decode(s, 0);
-        try {
-            ObjectInputStream ois = new ObjectInputStream(
-                    new ByteArrayInputStream(data));
-            Object o = ois.readObject();
-            ois.close();
-            return o;
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public static VideoDetail getVideoDetail(Context context, String id) {
+    public static VideoDetailItem getVideoDetail(Context context, String id) {
         Cursor cursor = context.getContentResolver().query(VideoDetailContract.CONTENT_URI,
                 null, VideoDetailContract.CODE + " = ? ", new String[]{id}, "");
         if (cursor != null && cursor.moveToFirst()) {
-            VideoDetail detail = (VideoDetail) fromEncodedString(cursor.getString(
-                    cursor.getColumnIndex(VideoDetailContract.SERIALIZED_OBJECT)));
+            VideoDetailItem detail = DataUtils.fromJson(cursor.getString(
+                            cursor.getColumnIndex(VideoDetailContract.SERIALIZED_OBJECT)),
+                    VideoDetailItem.class);
             cursor.close();
             return detail;
         }
         return null;
 
+    }
+
+    /**
+     * Instert a list of videoDetails into the DB
+     *
+     * @param mContext
+     * @param videoDetailItemList
+     */
+    public static void bulkVideoInsert(Context mContext, List<VideoDetailItem> videoDetailItemList) {
+        ContentValues[] cVs = new ContentValues[videoDetailItemList.size()];
+        for (int i = 0; i < videoDetailItemList.size(); i++) {
+            VideoDetailItem videoDetailItem = videoDetailItemList.get(i);
+            cVs[i] = VideoDetailContract.getContentValues(videoDetailItem);
+        }
+        mContext.getContentResolver().bulkInsert(VideoDetailContract.CONTENT_URI, cVs);
     }
 
 

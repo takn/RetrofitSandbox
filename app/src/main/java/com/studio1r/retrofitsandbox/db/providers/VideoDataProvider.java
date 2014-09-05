@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.studio1r.retrofitsandbox.db.contracts.VideoDetailContract;
 import com.tjeannin.provigen.ProviGenOpenHelper;
 import com.tjeannin.provigen.ProviGenProvider;
+import com.tjeannin.provigen.helper.TableBuilder;
+import com.tjeannin.provigen.helper.TableUpdater;
+import com.tjeannin.provigen.model.Constraint;
 
 /**
  * Created by nelsonramirez on 9/1/14.
@@ -45,6 +48,19 @@ public class VideoDataProvider extends ProviGenProvider {
                                        SQLiteDatabase.CursorFactory factory, int version,
                                        Class[] contractClasses) {
             super(context, databaseName, factory, version, contractClasses);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase database) {
+            new TableBuilder(VideoDetailContract.class)
+                    .addConstraint(VideoDetailContract.INTERNAL, Constraint.UNIQUE,
+                            Constraint.OnConflict.REPLACE)
+                    .createTable(database);
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
+            TableUpdater.addMissingColumns(database, VideoDetailContract.class);
         }
     }
 }

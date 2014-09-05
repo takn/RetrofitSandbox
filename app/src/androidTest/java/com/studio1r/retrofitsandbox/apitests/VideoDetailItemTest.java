@@ -5,7 +5,7 @@ import android.test.AndroidTestCase;
 /**
  * Created by nelsonramirez on 9/1/14.
  */
-public class VideoDetailTest extends AndroidTestCase {
+public class VideoDetailItemTest extends AndroidTestCase {
     public void testEndpointConfiguration() {
         assertTrue(true);
     }
