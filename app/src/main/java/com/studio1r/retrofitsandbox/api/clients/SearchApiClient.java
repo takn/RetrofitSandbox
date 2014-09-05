@@ -1,5 +1,6 @@
 package com.studio1r.retrofitsandbox.api.clients;
 
+import android.content.Context;
 import android.database.Observable;
 
 import com.studio1r.retrofitsandbox.api.APIConfiguration;
@@ -7,7 +8,6 @@ import com.studio1r.retrofitsandbox.api.model.Search;
 
 import java.util.Map;
 
-import retrofit.RestAdapter;
 import retrofit.http.GET;
 import retrofit.http.Path;
 import retrofit.http.QueryMap;
@@ -26,7 +26,7 @@ public class SearchApiClient {
          *                   startat - int
          *                   lmitto - int
          * @return Obvservable Search search body
-         *
+         * <p/>
          * EXAMPLE endpoint
          * //http://devmobileapi.makerstudios.com/v1/{sitecode}/
          * search?q={search_term}&order={sort_order}
@@ -39,14 +39,9 @@ public class SearchApiClient {
 
     private final SearchRetrofitService mSearchClient;
 
-    public SearchApiClient() {
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint(APIConfiguration.getEndpoint())
-                .setRequestInterceptor(APIConfiguration.requestInterceptor)
-                .build();
+    public SearchApiClient(Context context) {
 
-        restAdapter.setLogLevel(RestAdapter.LogLevel.BASIC);
-        mSearchClient = restAdapter.create(
+        mSearchClient = APIConfiguration.getRestAdapter(context).create(
                 SearchRetrofitService.class);
     }
 

@@ -1,16 +1,21 @@
 package com.studio1r.retrofitsandbox.api;
 
-import android.util.Log;
+import android.content.Context;
 
+import com.squareup.okhttp.Cache;
+import com.squareup.okhttp.OkHttpClient;
 import com.studio1r.retrofitsandbox.Constants;
 
+import java.io.File;
+import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
-import retrofit.RequestInterceptor;
+import retrofit.RestAdapter;
+import retrofit.client.OkClient;
 
 public class APIConfiguration {
 
@@ -22,14 +27,42 @@ public class APIConfiguration {
     // mobileapi.makerstudios.com
     //TODO host based on dev setting...
     private final static String host = "stagemobileapi.makerstudios.com";
-//    private final static String host = "localhost:8081";
+    //    private final static String host = "localhost:8081";
     private final static String path = Constants.VERSION;
     public final static String sitecode = Constants.SITE_CODE;
-    public final static String videoPrefix = "polarisgo.com/video/";
+
+    private final static int DATABASE_TTL_MILLIS = 1000 * 60 * 60; //1HR
+    private final static int MEMCACHE_TTL_MILLIS = 1000 * 60 * 60; //1HR
+    private static OkHttpClient sOkHttpClient;
+    private static RestAdapter sRestAdapter;
+
+    /**
+     * Check if given timestamp should be expired in the database
+     *
+     * @param timestamp
+     * @return true if expired | false if still good
+     */
+    public static boolean isDBEntryExpired(long timestamp) {
+        return isExpired(DATABASE_TTL_MILLIS, timestamp);
+    }
+
+    /**
+     * Check if given timestamp should be expired in memory cache
+     *
+     * @param timestamp
+     * @return true if expired | false if still good
+     */
+    public static boolean isMemEntryExpired(long timestamp) {
+        return isExpired(MEMCACHE_TTL_MILLIS, timestamp);
+    }
+
+    private static boolean isExpired(long ttl, long timestamp) {
+        return (timestamp + ttl) < System.currentTimeMillis();
+    }
+
+    ;
 
     //
-    private static String endpoint;
-
     public static String encode(String url) {
         return genHMAC(salt, url);
     }
@@ -58,27 +91,35 @@ public class APIConfiguration {
         }
     }
 
-    public static String genUrl(String command) {
-        String url = protocol + "://" + host + "/" + path + "/" + sitecode + "/" + command;
-        String auth = encode(url);
-        if (command.contains("?")) {
-            return url + "&authorization=" + auth;
-        } else {
-            return url + "?authorization=" + auth;
-        }
-    }
-
     public static String getEndpoint() {
         return protocol + "://" + host + "/" + path + "/" + sitecode;
     }
 
-    public static RequestInterceptor requestInterceptor = new RequestInterceptor() {
-        public static final String TAG = "request";
-
-        @Override
-        public void intercept(RequestFacade request) {
-            request.addQueryParam("authorization",
-                    encode("http://stagemobileapi.makerstudios.com/v1/polaris/video/Mzwf4Ket9Uqx"));
+    /**
+     * Returns a request adapter backed by a 200 entry cache.
+     *
+     * @param context
+     * @return
+     */
+    public static RestAdapter getRestAdapter(Context context) {
+        if (sOkHttpClient == null) {
+            sOkHttpClient = new OkHttpClient();
+            try {
+                Cache cache = new Cache(new File(context.getCacheDir(), "mkrHttpCache"), 200);
+                sOkHttpClient.setCache(cache);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-    };
+
+        if (sRestAdapter == null) {
+            sRestAdapter = new RestAdapter.Builder()
+                    .setEndpoint(APIConfiguration.getEndpoint())
+                    .setClient(new OkClient(sOkHttpClient))
+                    .build();
+            sRestAdapter.setLogLevel(RestAdapter.LogLevel.BASIC);
+        }
+
+        return sRestAdapter;
+    }
 }

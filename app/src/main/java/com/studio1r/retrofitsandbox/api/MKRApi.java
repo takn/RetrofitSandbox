@@ -22,9 +22,9 @@ import rx.schedulers.Schedulers;
 /**
  * Retrieves data and manages caches.
  * Requests are furbished in the following order:
- * 1. Is it in the data lru mem cache?
- * 2. Is it in the db? Provigen content provider
- * 3. Ask Retrofit for the data.
+ * 1. Is it in the data lru mem cache && not expired?
+ * 2. Is it in the db? && not expired?
+ * 3. Ask Retrofit for the data. -- retrofit configures its own cache.
  * Created by nelsonramirez on 9/1/14.
  */
 public class MKRApi {
@@ -55,20 +55,17 @@ public class MKRApi {
                 .subscribe(new InternalUserFeedObserver());
     }
 
-    //TODO need to set expiration rules.
     public void onEvent(VideoDetailRequest request) {
         Log.d(TAG, "Detail request received with id:" + request.id);
-        //TODO abstract cache logic so we don't have to repeat it all the time. although most
-        //requests will be different
         VideoDetailItem vid = mVideoLRUCache.get(request.id);
-        if (vid != null) {
+        if (vid != null && !APIConfiguration.isMemEntryExpired(vid.addedAtTime)) {
             Log.d(TAG, "lru cache hit for::" + request.id);
             EventBus.getDefault().post(new VideoDetailResponse<VideoDetailItem>(vid));
             return;
         }
 
         vid = DBHelper.getVideoDetail(mContext, request.id);
-        if (vid != null) {
+        if (vid != null && !APIConfiguration.isDBEntryExpired(vid.addedAtTime)) {
             Log.d(TAG, "database cache hit for::" + request.id);
             EventBus.getDefault().post(new VideoDetailResponse<VideoDetailItem>(vid));
             return;
@@ -97,6 +94,7 @@ public class MKRApi {
         @Override
         public void onNext(VideoDetailItem videoDetailItem) {
             //add results to LRU cache
+            videoDetailItem.addedAtTime = System.currentTimeMillis();
             mVideoLRUCache.put(videoDetailItem.code, videoDetailItem);
             //add results to database
             DBHelper.insertVideoDetail(mContext, videoDetailItem);
@@ -116,6 +114,7 @@ public class MKRApi {
         public void onNext(Feed feed) {
             //TODO we probably don't need to wrap the data.. could just post it, but it may be
             //useful for error handling.
+            feed.addedAtTime = System.currentTimeMillis();
             EventBus.getDefault().postSticky(new UserFeedResponse<Feed>(feed));
         }
     }

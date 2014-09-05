@@ -39,12 +39,7 @@ public class UserFeedApiClient {
             isMock = true;
             mUserFeedClient = null;
         } else {
-            RestAdapter restAdapter = new RestAdapter.Builder()
-                    .setEndpoint(APIConfiguration.getEndpoint())
-                    .build();
-
-            restAdapter.setLogLevel(RestAdapter.LogLevel.BASIC);
-            mUserFeedClient = restAdapter.create(
+            mUserFeedClient = APIConfiguration.getRestAdapter(context).create(
                     UserFeedRetrofitService.class);
         }
     }

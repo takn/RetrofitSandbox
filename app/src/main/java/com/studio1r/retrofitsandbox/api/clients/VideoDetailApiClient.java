@@ -36,7 +36,7 @@ public class VideoDetailApiClient {
          */
         @GET("/video/{video_identifier}")
         Observable<VideoDetailItem> getVideo(@Path("video_identifier") String id,
-                                         @Query("authorization") String auth);
+                                             @Query("authorization") String auth);
     }
 
 
@@ -52,12 +52,7 @@ public class VideoDetailApiClient {
             isMock = true;
             mVideoDetailClient = null;
         } else {
-            RestAdapter restAdapter = new RestAdapter.Builder()
-                    .setEndpoint(APIConfiguration.getEndpoint())
-                    .build();
-
-            restAdapter.setLogLevel(RestAdapter.LogLevel.BASIC);
-            mVideoDetailClient = restAdapter.create(
+            mVideoDetailClient = APIConfiguration.getRestAdapter(context).create(
                     VideoDetailRetrofitService.class);
         }
     }
@@ -71,6 +66,7 @@ public class VideoDetailApiClient {
             return mVideoDetailClient.getVideo(id, getAuthHash(id));
         }
     }
+
     //TODO move to Utils or APIConfiguration.
     private String getAuthHash(String id) {
         return APIConfiguration.encode(APIConfiguration.getEndpoint() + "/video/" + id);
@@ -98,7 +94,7 @@ public class VideoDetailApiClient {
 
         @Override
         public Observable<VideoDetailItem> getVideo(@Path("video_identifier") String id,
-                                                @Query("authorization") String auth) {
+                                                    @Query("authorization") String auth) {
             //read json file
             return Observable.from(mVideoDetailItem);
         }
